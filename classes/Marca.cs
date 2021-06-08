@@ -1,27 +1,44 @@
 using System;
+using System.Collections.Generic;
 
 namespace ProdutosProj.classes
 {
     public class Marca : IMarca
     {
-        private int Codigo;
+        public int Codigo;
 
-        private string NomeMarca;
+        public string NomeMarca;
 
-        private string DataCadastro = DateTime.Now.ToString();
-        public void Cadastrar(Marca Marca)
-        {
-            throw new System.NotImplementedException();
+        private DateTime DataCadastro;
+
+        List<Marca> marcas = new List<Marca>();
+
+        public Marca( ){
+            DataCadastro = DateTime.Now;
         }
 
-        public void Deletar()
+         public void Cadastrar(Marca Marca)
         {
-            throw new System.NotImplementedException();
+            this.marcas.Add(Marca);
+        }
+
+        public void Deletar(Marca marcas)
+        {
+            Console.WriteLine("Qual o código da marca que deseja apagar?");
+            int code = int.Parse(Console.ReadLine());
+
+            this.marcas.RemoveAll(item => item.Codigo == code);
         }
 
         public void Listar()
         {
-            throw new System.NotImplementedException();
+            foreach(Marca item in this.marcas){
+            
+            Console.WriteLine($@"
+            Nome da marca: {NomeMarca}
+            Código da marca: {Codigo}
+            Data de cadastro da marca: {DataCadastro}");
+            }
         }
     }
 }

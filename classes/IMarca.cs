@@ -6,6 +6,6 @@ namespace ProdutosProj.classes
 
        void Listar();
 
-       void Deletar();
+       void Deletar(Marca marcas);
     }
 }
