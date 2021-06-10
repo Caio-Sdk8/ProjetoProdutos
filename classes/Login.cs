@@ -14,6 +14,8 @@ namespace ProjetoProdutos.classes
         {
             Usuario U = new Usuario();
 
+            
+
             bool repete = false;
 
             do
@@ -189,7 +191,13 @@ namespace ProjetoProdutos.classes
                                             crburro = true;
                                         }
 
+                                        Usuario cadastrando = usuario.ListaUsuario.Find(x => x.Nome != "");
+
+                                        produtinho.CadastradoPor = cadastrando.Nome;
+
                                     } while (crburro);
+
+                                    
 
                                     produtos.cadastrar(produtinho);
                                     repete2 = true;
@@ -222,13 +230,13 @@ namespace ProjetoProdutos.classes
             } while (repete1);
 
                     }
-                    else
+                    else if (SenhaLog != usuario1.Senha)
                     {
                         Console.WriteLine("Senha errada.");
                         burro = true;
                     }
                 }
-                else
+                else if (EmailLog != usuario1.Email)
                 {
                     Console.WriteLine("Email Inválido");
                     burro = true;

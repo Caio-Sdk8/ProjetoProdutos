@@ -6,7 +6,7 @@ namespace ProjetoProdutos.classes
     public class Usuario
     {
         private int Codigo { get; set; }
-        private string Nome { get; set; }
+        public string Nome { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
         private DateTime DataCadastro = DateTime.Now;
