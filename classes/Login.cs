@@ -241,6 +241,9 @@ namespace ProjetoProdutos.classes
                     Console.WriteLine("Email Inválido");
                     burro = true;
                 }
+                else{
+                    Console.WriteLine("está vazio");
+                }
             } while (burro);
 
             return "";
