@@ -12,41 +12,41 @@ namespace ProjetoProdutos.classes
 
         public Login()
         {
-           Usuario U = new Usuario();
+            Usuario U = new Usuario();
 
             bool repete = false;
 
             do
             {
-                
 
 
-            Console.WriteLine(@"
+
+                Console.WriteLine(@"
                     1 - Logar
                     2 - Cadastro
                     3 - Sair
 ");
 
-            int opcaoMenu = int.Parse(Console.ReadLine());
+                int opcaoMenu = int.Parse(Console.ReadLine());
 
-            switch (opcaoMenu)
-            {
-                case 1:
-                Logar(U);
-                repete = true;
-                    break;
-                case 2:
-                U.Cadastrar();
-                repete = true;
-                    break;
-                case 3:
-                repete = false;
-                    break;
-                default:
-                    break;
+                switch (opcaoMenu)
+                {
+                    case 1:
+                        Logar(U);
+                        repete = true;
+                        break;
+                    case 2:
+                        U.Cadastrar();
+                        repete = true;
+                        break;
+                    case 3:
+                        repete = false;
+                        break;
+                    default:
+                        break;
 
 
-            }
+                }
 
             } while (repete);
         }
@@ -55,26 +55,30 @@ namespace ProjetoProdutos.classes
 
         public string Logar(Usuario usuario)
         {
-
-            Console.WriteLine("Insira seu email:");
-            string EmailLog = Console.ReadLine();
-
-
-
-            Usuario usuario1 = usuario.ListaUsuario.Find(item => item.Email == EmailLog);
-
- 
-            if (EmailLog == usuario1.Email)
+            bool burro = false;
+            do
             {
-                Console.WriteLine("Insira sua senha");
-                string SenhaLog = Console.ReadLine();
-                Usuario usuario2 = usuario.ListaUsuario.Find(item => item.Senha == SenhaLog);
 
-                if (SenhaLog == usuario2.Senha)
+                Console.WriteLine("Insira seu email:");
+                string EmailLog = Console.ReadLine();
+
+
+
+                Usuario usuario1 = usuario.ListaUsuario.Find(item => item.Email == EmailLog);
+
+
+                if (EmailLog == usuario1.Email)
                 {
-                    Console.WriteLine();
+                    Console.WriteLine("Insira sua senha");
+                    string SenhaLog = Console.ReadLine();
+                    Usuario usuario2 = usuario.ListaUsuario.Find(item => item.Senha == SenhaLog);
 
-                    bool repete1 = false;
+                    if (SenhaLog == usuario2.Senha)
+                    {
+                        burro = false;
+                        Console.WriteLine("Logado com sucesso, você será levado ao menu principal.");
+
+                        bool repete1 = false;
             Produto produtos = new Produto();
             Marca marcas = new Marca();
 
@@ -216,14 +220,20 @@ namespace ProjetoProdutos.classes
                 }
 
             } while (repete1);
-                }else
-                {
-                    Console.WriteLine("Senha errada.");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Senha errada.");
+                        burro = true;
+                    }
                 }
-            }else
-            {
-                Console.WriteLine("Email Inválido");
-            }
+                else
+                {
+                    Console.WriteLine("Email Inválido");
+                    burro = true;
+                }
+            } while (burro);
 
             return "";
         }

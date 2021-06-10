@@ -30,7 +30,7 @@ namespace ProjetoProdutos.classes
 
         public void deletar(Produto produto)
         {
-            Console.WriteLine("Qual o código da marca que deseja apagar?");
+            Console.WriteLine("Qual o código do produto que deseja apagar?");
             int code = int.Parse(Console.ReadLine());
 
             this.produtos.RemoveAll(item => item.Codigo == code);
