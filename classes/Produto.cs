@@ -1,32 +1,53 @@
+using System;
+using System.Collections.Generic;
+
 namespace ProjetoProdutos.classes
 {
     public class Produto : IProduto
     {
-        private int Codigo;
+        public int Codigo;
 
-        private string NomeProduto;
+        public string NomeProduto;
 
-        private float Preco;
+        public float Preco;
 
-        private string DataCadastro;
+        public DateTime DataCadastro;
 
-        private string Marca;
+        public string Marca;
 
-        private string CadastradoPor;
+        public string CadastradoPor;
 
-        public void cadastrar()
-        {
-            throw new System.NotImplementedException();
+        List<Produto> produtos = new List<Produto>();
+
+         public Produto( ){
+            DataCadastro = DateTime.Now;
         }
 
-        public void deletar()
+         public void cadastrar(Produto produto)
         {
-            throw new System.NotImplementedException();
+            produtos.Add(produto);
+        }
+
+        public void deletar(Produto produto)
+        {
+            Console.WriteLine("Qual o código da marca que deseja apagar?");
+            int code = int.Parse(Console.ReadLine());
+
+            this.produtos.RemoveAll(item => item.Codigo == code);
         }
 
         public void listar()
         {
-            throw new System.NotImplementedException();
+            foreach(Produto item in this.produtos){
+            
+            Console.WriteLine($@"
+            Nome do produto: {item.NomeProduto}
+            Código do produto: {item.Codigo}
+            Data de cadastro do produto: {item.DataCadastro}
+            Cadastrado por: {item.CadastradoPor}
+            Preço do produto: {item.Preco:C2}
+            Marca do produto: {item.Marca}");
+            }
         }
     }
 }

@@ -2,8 +2,8 @@ namespace ProjetoProdutos.classes
 {
     public interface IProduto
     {
-        void cadastrar();
+        void cadastrar(Produto produto);
         void listar();
-        void deletar();
+        void deletar(Produto produto);
     }
 }
