@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProjetoProdutos.classes
 {
-    public class newclass
+    public class Usuario
     {
         private int Codigo { get; set; }
         private string Nome { get; set; }
@@ -33,14 +33,6 @@ namespace ProjetoProdutos.classes
             return "Cadastrado";
         }
 
-        public string Mostrar(){
-            Console.WriteLine($@"
-Nome: {Nome}
-Email: {Email}
-Senha: {Senha}
-");
-            return "";
-        }
         public void Deletar(){         
             
             Nome = null;
